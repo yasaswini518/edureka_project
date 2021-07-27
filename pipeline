@@ -1,0 +1,14 @@
+pipeline{
+  agent any
+  stages{
+    stage('clone the repo')
+        steps{
+            git branch : 'main',url 'https://github.com/yasaswini518/edureka_project.git'
+         }
+     }
+     stage('Ansible playbook')
+     {
+         steps{
+                ansiblePlaybook credentialsId: 'ansible-host',disableHostkeyChecking: true,installation:'myansible'
+      }
+}
